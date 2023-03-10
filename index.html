@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Movie Data</title>
   </head>
   <body>
-    <div>
+    <div class="wrapper">
       <h1>
         Welcome to gold collection of hollywood, comprising of the whole 4
         movies 👏
@@ -38,6 +39,45 @@
       </div> -->
 
       <div id="content"></div>
+      <button id="addNewMovie">Add your favorite movie</button>
+      <div class="addNewMovie">
+        <form>
+          <fieldset>
+            <label for="movieTitle"
+              >Enter Movie Title: <input id="movieTitle" type="text" required
+            /></label>
+            <br />
+            <label for="rating"
+              >Enter Your rating: <input id="rating" type="number" required
+            /></label>
+            <br />
+            <label for="year"
+              >Release year: <input id="year" type="number" required
+            /></label>
+            <br />
+            <label for="runtime"
+              >How long is the movie (in minutes):
+              <input id="runtime" type="number" required
+            /></label>
+            <br />
+            <label for="plot"
+              >Describe the plot:
+              <input
+                id="plot"
+                type="text"
+                minlength="20"
+                maxlength="200"
+                required
+            /></label>
+            <br />
+            <label for="cast"
+              >Enter cast members:
+              <input id="cast" type="text" minlength="7" required
+            /></label>
+          </fieldset>
+          <input type="submit" value="Add" class="submitMovie" />
+        </form>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>

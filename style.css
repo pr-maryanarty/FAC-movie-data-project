@@ -1,0 +1,23 @@
+.wrapper {
+  width: 80%;
+  background-color: rgb(219, 193, 240);
+  margin: auto;
+  padding-left: 1em;
+  padding-top: 1rem;
+  border-radius: 2em;
+}
+button {
+  padding: 1rem;
+  border-radius: 1em;
+  background-color: rgb(96, 32, 148);
+  color: rgb(202, 166, 231);
+}
+.addNewMovie {
+  display: none;
+}
+.addNewMovie.show {
+  display: flex;
+}
+body {
+  background-color: rgb(141, 86, 185);
+}

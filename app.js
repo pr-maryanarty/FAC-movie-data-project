@@ -63,6 +63,8 @@ function renderMovieGallery(movieArray) {
 }
 
 function renderMovieCard(movie) {
+  const content = document.querySelector("#content");
+
   let plot = movie.plot;
   let cast = movie.cast;
   let year = movie.year;
@@ -82,8 +84,6 @@ function renderMovieCard(movie) {
   const ratingDescription = document.createElement("p");
   ratingDescription.innerHTML = rating;
   //
-
-  const content = document.querySelector("#content");
   content.append(movieCard);
   movieCard.append(plotDescription);
   movieCard.append(castDescription);
@@ -92,5 +92,46 @@ function renderMovieCard(movie) {
   movieCard.append(ratingDescription);
 }
 
-// renderMovieCard(curMovie);
-renderMovieGallery(movieData);
+function renderMovieData() {
+  for (const movieTitle in movieData) {
+    let curMovie = movieData[movieTitle];
+    renderMovieCard(curMovie);
+  }
+}
+
+// renderMovieGallery(movieData);
+// renderMovieCard(movieData["The Darjeeling Limited"]);
+// renderMovieCard(movieData["The Royal Tenenbaums"]);
+// renderMovieCard(movieData["Fantastic Mr. Fox"]);
+// renderMovieCard(movieData["The Grand Budapest Hotel"]);
+
+renderMovieData();
+
+let button = document.querySelector("#submitMovie");
+button.addEventListener("click", function () {
+  movieData[movieTitle] = movie;
+});
+
+//movieData["Harry potter"] = harryPotterMovie;
+// movieData.push("Harry potter", harryPotterMovie)
+
+// let hpRatingInputElement = document.querySelector("#rating");
+// hpRatingValue = hpRatingInputElement.value;
+
+// let hpPlotInputElement = document.querySelector("#plot");
+// hpPlotValue = hpPlotInputElement.value;
+
+// let harryPotterMovie = {
+//   rating: hpRatingValue,
+//   plot: hpPlotValue,
+// };
+
+// movieData["Harry Potter"] = harryPotterMovie;
+
+renderMovieData();
+
+const btn = document.querySelector("#addNewMovie");
+
+btn.addEventListener("click", function () {
+  let formPopUp = document.querySelector(".addNewMovie").classList.add("show");
+});
