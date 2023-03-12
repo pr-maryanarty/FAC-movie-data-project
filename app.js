@@ -34,37 +34,11 @@ let movieData = {
   },
 };
 
-let curMovie = movieData["The Darjeeling Limited"]; // curMovie <-> {"The Darjeeling Limited": { ... }}
-
+const content = document.querySelector("#content");
 // const searchButton = document.querySelector("#search").value.toLowerCase();
 // searchButton.addEventListener("input", function () {
 
-// }
-
-// }
-//
-
-// function renderMovies(moviesArray) {
-//   let rootDiv = document.getElementById("result");
-// }
-
-// renderMovies(movieData);
-// let movies = Object.keys(movieData);
-// console.log(movieData["The Grand Budapest Hotel"].rating);
-// console.log(movies);
-// console.log(movies[2]);
-
-// let name = document.querySelector(movieData)`movie ${movie}`;
-// let result =
-
-function renderMovieGallery(movieArray) {
-  // for aMovie of movieArray
-  //    renderMovieCard(aMovie)
-}
-
 function renderMovieCard(movie) {
-  const content = document.querySelector("#content");
-
   let plot = movie.plot;
   let cast = movie.cast;
   let year = movie.year;
@@ -75,42 +49,39 @@ function renderMovieCard(movie) {
 
   const plotDescription = document.createElement("p");
   plotDescription.innerHTML = plot;
-  const castDescription = document.createElement("p");
-  castDescription.innerHTML = cast;
-  const yearDescription = document.createElement("p");
-  yearDescription.innerHTML = year;
-  const runtimeDescription = document.createElement("p");
-  runtimeDescription.innerHTML = runtime;
   const ratingDescription = document.createElement("p");
-  ratingDescription.innerHTML = rating;
+  ratingDescription.innerHTML = "⭐️ " + rating;
+  const yearDescription = document.createElement("p");
+  yearDescription.innerHTML = "realised in " + year;
+  const runtimeDescription = document.createElement("p");
+  runtimeDescription.innerHTML = runtime + " mins";
+  const castDescription = document.createElement("p");
+  castDescription.innerHTML = "cast " + cast;
+
   //
   content.append(movieCard);
   movieCard.append(plotDescription);
-  movieCard.append(castDescription);
+  movieCard.append(ratingDescription);
   movieCard.append(yearDescription);
   movieCard.append(runtimeDescription);
-  movieCard.append(ratingDescription);
+  movieCard.append(castDescription);
+  movieCard.classList.add("movieCard");
+  plotDescription.classList.add("elementOfMoviePlot");
+  castDescription.classList.add("elementOfMovieCast");
+  yearDescription.classList.add("elementOfMovieYear");
+  runtimeDescription.classList.add("elementOfMovieRuntime");
+  ratingDescription.classList.add("elementOfMovieRating");
 }
 
 function renderMovieData() {
+  content.innerHTML = "";
   for (const movieTitle in movieData) {
     let curMovie = movieData[movieTitle];
     renderMovieCard(curMovie);
   }
 }
 
-// renderMovieGallery(movieData);
-// renderMovieCard(movieData["The Darjeeling Limited"]);
-// renderMovieCard(movieData["The Royal Tenenbaums"]);
-// renderMovieCard(movieData["Fantastic Mr. Fox"]);
-// renderMovieCard(movieData["The Grand Budapest Hotel"]);
-
 renderMovieData();
-
-let button = document.querySelector("#submitMovie");
-button.addEventListener("click", function () {
-  movieData[movieTitle] = movie;
-});
 
 //movieData["Harry potter"] = harryPotterMovie;
 // movieData.push("Harry potter", harryPotterMovie)
@@ -128,10 +99,24 @@ button.addEventListener("click", function () {
 
 // movieData["Harry Potter"] = harryPotterMovie;
 
-renderMovieData();
+let submitNewMovie = document.querySelector(".submitMovie");
+submitNewMovie.addEventListener("click", function () {
+  let movieTitle = document.getElementById("movieTitle").value;
 
-const btn = document.querySelector("#addNewMovie");
+  let movie = {
+    rating: document.getElementById("rating").value,
+    runtime: document.getElementById("runtime").value,
+    year: document.getElementById("year").value,
+    plot: document.getElementById("plot").value,
+    cast: document.getElementById("cast").value,
+  };
 
-btn.addEventListener("click", function () {
+  movieData[movieTitle] = movie;
+  renderMovieData();
+  document.querySelector(".addNewMovie").classList.remove("show");
+});
+
+const formAddMovie = document.querySelector("#addNewMovie");
+formAddMovie.addEventListener("click", function () {
   let formPopUp = document.querySelector(".addNewMovie").classList.add("show");
 });
