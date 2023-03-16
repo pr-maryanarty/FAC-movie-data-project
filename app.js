@@ -1,7 +1,7 @@
 let movieData = {
   "The Darjeeling Limited": {
     plot: "A year after their father's funeral, three brothers travel across India by train in an attempt to bond with each other.",
-    cast: ["Jason Schwartzman", "Owen Wilson", "Adrien Brody"],
+    cast: ["Jason Schwartzman", " Owen Wilson", " Adrien Brody"],
     runtime: 151,
     rating: 7.2,
     year: 2007,
@@ -10,7 +10,7 @@ let movieData = {
     plot: "The eccentric members of a dysfunctional family reluctantly gather under the same roof for various reasons",
     rating: 7.6,
     year: 2001,
-    cast: ["Gene Hackman", "Gwnyeth Paltrow", "Anjelica Huston"],
+    cast: ["Gene Hackman ", " Gwnyeth Paltrow", " Anjelica Huston"],
     runtime: 170,
   },
   "Fantastic Mr. Fox": {
@@ -18,9 +18,9 @@ let movieData = {
     plot: "An urbane fox cannot resist returning to his farm raiding ways and then must help his community survive the farmers' retaliation.",
     cast: [
       "George Clooney",
-      "Meryl Streep",
-      "Bill Murray",
-      "Jason Schwartzman",
+      " Meryl Streep",
+      " Bill Murray",
+      " Jason Schwartzman",
     ],
     runtime: 147,
     rating: 7.9,
@@ -30,7 +30,7 @@ let movieData = {
     runtime: 159,
     year: 2014,
     plot: "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
-    cast: ["Ralph Fiennes", "F. Murray Abraham", "Mathieu Amalric"],
+    cast: ["Ralph Fiennes", " F. Murray Abraham", " Mathieu Amalric"],
   },
 };
 
@@ -92,7 +92,7 @@ function renderMovieCard(movie) {
   const ratingElement = document.createElement("p");
   ratingElement.innerHTML = "⭐️ " + rating;
   const yearElement = document.createElement("p");
-  yearElement.innerHTML = "realised in " + year;
+  yearElement.innerHTML = "released in " + year;
   const runtimeElement = document.createElement("p");
   runtimeElement.innerHTML = runtime + " mins";
   const castElement = document.createElement("p");
@@ -114,8 +114,37 @@ function renderMovieCard(movie) {
   ratingElement.classList.add("elementOfMovieRating");
 }
 
+// render configs :
+//   sort by
+//   filter by title
+//   filter by rating
+
+// find selector
+// on selection -> sort
+let dropDownSort = document.querySelector("#movieSort");
+let curSeletedSortValue = "unselected";
+dropDownSort.addEventListener("change", function (selectedElement) {
+  curSeletedSortValue = selectedElement.target.value;
+  renderMoviesArray();
+});
+
 function renderMoviesArray() {
   content.innerHTML = "";
+
+  if (curSeletedSortValue === "rating") {
+    moviesArray.sort(function (movie1, movie2) {
+      return movie1.rating - movie2.rating;
+    });
+  } else if (curSeletedSortValue === "year") {
+    moviesArray.sort(function (movie1, movie2) {
+      return movie1.year - movie2.year;
+    });
+  } else if (curSeletedSortValue === "runtime") {
+    moviesArray.sort(function (movie1, movie2) {
+      return movie1.runtime - movie2.runtime;
+    });
+  }
+
   for (const movie of moviesArray) {
     renderMovieCard(movie);
   }
