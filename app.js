@@ -162,11 +162,21 @@ submitNewMovie.addEventListener("click", function () {
     plot: document.getElementById("plot").value,
     cast: document.getElementById("cast").value,
   };
-
-  moviesArray.push(newMovie);
-  renderMoviesArray();
-  //close the form
-  document.querySelector(".addNewMovie").classList.remove("show");
+  if (
+    document.getElementById("movieTitle").value.trim() !== "" &&
+    document.getElementById("plot").value.trim() !== "" &&
+    document.getElementById("cast").value.trim() !== "" &&
+    document.getElementById("runtime").value.trim() !== "" &&
+    document.getElementById("year").value.trim() !== "" &&
+    document.getElementById("rating").value.trim() !== ""
+  ) {
+    moviesArray.push(newMovie);
+    renderMoviesArray();
+    //close the form
+    document.querySelector(".addNewMovie").classList.remove("show");
+  } else {
+    alert("Please fill in all the fields!");
+  }
 });
 
 const formAddMovie = document.querySelector("#addNewMovie");

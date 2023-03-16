@@ -62,12 +62,13 @@
             /></label>
             <br />
             <label for="year"
-              >Release year: <input id="year" type="number" required
+              >Release year:
+              <input id="year" type="number" minlength="4" required
             /></label>
             <br />
             <label for="runtime"
               >How long is the movie (in minutes):
-              <input id="runtime" type="number" required
+              <input id="runtime" type="number" minlength="3" required
             /></label>
             <br />
             <label for="plot"
@@ -82,11 +83,11 @@
             <br />
             <label for="cast"
               >Enter cast members:
-              <input id="cast" type="text" minlength="7" required
+              <input id="cast" type="text" minlength="20" required
             /></label>
           </fieldset>
           <input type="button" value="Add" class="submitMovie" />
-          <input type="reset" />
+          <input type="reset" class="submitMovie" />
         </form>
       </div>
     </div>
