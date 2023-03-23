@@ -70,10 +70,11 @@ body {
   background-color: rgb(64, 6, 114);
 }
 .submitMovie {
-  padding: 1rem;
+  padding: 0rem 1rem;
   border-radius: 1em;
   background-color: rgb(173, 123, 214);
   color: rgb(66, 24, 100);
+  margin: 1rem;
 }
 .movieForm {
   padding: 1em;
@@ -84,4 +85,7 @@ h1 {
 }
 h2 {
   text-align: center;
+}
+label {
+  padding: 1em;
 }
